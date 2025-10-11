@@ -1,5 +1,8 @@
 import tkinter as tk
 
+from cards import CARDS
+
+
 
 class Card:
     def __init__(self, id: int, question: str, answer: str):
@@ -9,20 +12,23 @@ class Card:
 
 
 class IndexCardApp:
-    def __init__(self, root):
-        self.cards = [
-                    Card(0, "Lagerwirtschaft", "Planung, Organisation und Kontrolle von Lagerbeständen um den Waren- und Materialfluss in einem Unternehmen effizient zu steuern"), 
-                    Card(1, "Materialwirtschaft", "Planung, Steuerung und Verwaltung der Materialbewegungen eines Unternehmens"), 
-                    Card(2, "KANO-Modell", "Werkzeug zur Analyse von Kundenbedürfnissen und zur Verbesserung von Produkten/Leistungen"), 
-                    Card(3, "Teile des KANO-Modells", "Basismerkmale, Leistungsmerkmale, Begeisterungsmerkmale, unerhebliche Merkmale, Rückweisungsmerkmale"), 
-                    ]
+    def __init__(self, root, cards):
+        self.cards = []
+        for card in cards:
+            self.cards.append(Card(card[0], card[1], card[2]))
         self.current_card = 0
         self.is_revealed = False
 
         root.title("Index Card Learning System")
 
-        self.question_label = tk.Label(root, text=self.cards[self.current_card].question, font=('Helvetica', 24), width=30, height=5)
-        self.question_label.pack(pady=20)
+        self.question_label = tk.Label(
+                root,
+                text=self.cards[self.current_card].question,
+                font=('Helvetica', 18),
+                wraplength=600,
+                justify='left'
+                )
+        self.question_label.pack(padx=20, pady=20, expand=True, fill='both')
 
         self.card_button = tk.Button(root, text="Flip", command=self.flip_card, font=('Helvetica', 16))
         self.card_button.pack()
@@ -47,7 +53,7 @@ class IndexCardApp:
 
 def main():
     window = tk.Tk()
-    app = IndexCardApp(window)
+    app = IndexCardApp(window, CARDS)
     window.mainloop()
 
 
