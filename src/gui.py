@@ -1,4 +1,6 @@
 import tkinter as tk
+import tkinter as ttk
+
 
 from cards import CARDS
 
@@ -21,7 +23,7 @@ class IndexCardApp:
 
         root.title("Index Card Learning System")
 
-        self.question_label = tk.Label(
+        self.question_label = ttk.Label(
                 root,
                 text=self.cards[self.current_card].question,
                 font=('Helvetica', 18),
@@ -30,10 +32,10 @@ class IndexCardApp:
                 )
         self.question_label.pack(padx=20, pady=20, expand=True, fill='both')
 
-        self.card_button = tk.Button(root, text="Flip", command=self.flip_card, font=('Helvetica', 16))
+        self.card_button = ttk.Button(root, text="Flip", command=self.flip_card, font=('Helvetica', 16))
         self.card_button.pack()
 
-        self.next_button = tk.Button(root, text="Next", command=self.next_card, font=('Helvetica', 16))
+        self.next_button = ttk.Button(root, text="Next", command=self.next_card, font=('Helvetica', 16))
         self.next_button.pack()
 
 
@@ -52,7 +54,8 @@ class IndexCardApp:
 
 
 def main():
-    window = tk.Tk()
+    window = ttk.Tk()
+    window.geometry("987x666")
     app = IndexCardApp(window, CARDS)
     window.mainloop()
 
