@@ -12,7 +12,7 @@ class App(customtkinter.CTk):
 
         # configure window
         self.title("Index Card Learning System")
-        self.geometry(f"{1100}x{580}")
+        self.geometry(f"{940}x{580}")
 
         # configure grid layout (4x4)
         self.grid_columnconfigure(1, weight=1)
@@ -25,17 +25,12 @@ class App(customtkinter.CTk):
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_frame, text="Buckets", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 40))
-        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.sidebar_button_event)
+        self.sidebar_button_1 = customtkinter.CTkButton(self.sidebar_frame, text="Start", command=self.start_bucket_button_event)
         self.sidebar_button_1.grid(row=1, column=0, padx=20, pady=40)
-        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Learning", command=self.sidebar_button_event)
+        self.sidebar_button_2 = customtkinter.CTkButton(self.sidebar_frame, text="Learning", command=self.learning_bucket_button_event)
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=40)
-        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Three Correct", command=self.sidebar_button_event)
+        self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Three Correct", command=self.correct_bucket_button_event)
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=40)
-        self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_frame, text="Appearance Mode:", anchor="w")
-        self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
-        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_frame, values=["Light", "Dark", "System"], 
-                                                                       command=self.change_appearance_mode_event)
-        self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 40))
 
         # create sidebar_right
         self.sidebar_right_frame = customtkinter.CTkFrame(self, width=140, corner_radius=0)
@@ -43,16 +38,38 @@ class App(customtkinter.CTk):
         self.sidebar_right_frame.grid_rowconfigure(4, weight=1)
         self.logo_label = customtkinter.CTkLabel(self.sidebar_right_frame, text="Menu", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.logo_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.sidebar_right_button_1 = customtkinter.CTkButton(self.sidebar_right_frame, command=self.sidebar_button_event)
+        self.sidebar_right_button_1 = customtkinter.CTkButton(self.sidebar_right_frame, text="Options", command=self.option_button_event)
         self.sidebar_right_button_1.grid(row=1, column=0, padx=20, pady=10)
 
-        # create textbox
-        self.textbox = customtkinter.CTkTextbox(self, width=120)
-        self.textbox.grid(row=0, column=1, padx=(20, 20), pady=(20, 20), sticky="nsew")
+        self.appearance_mode_label = customtkinter.CTkLabel(self.sidebar_right_frame, text="Appearance Mode:", anchor="w")
+        self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
+        self.appearance_mode_optionemenu = customtkinter.CTkOptionMenu(self.sidebar_right_frame, 
+                                                                       values=["Light", "Dark", "System"], 
+                                                                       command=self.change_appearance_mode_event
+                                                                       )
+        self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 40))
+
+        # create middle_frame
+        self.middle_frame = customtkinter.CTkFrame(self, width=220, corner_radius=0) 
+        self.middle_frame.grid(row=0, column=1, rowspan=6, sticky="nsew", padx=20)
+        self.middle_frame.grid_rowconfigure(4, weight=1)
+        self.middle_frame.grid_columnconfigure(3, weight=0)
+
+        self.card_label = customtkinter.CTkLabel(self.middle_frame, text="Card", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.card_label.grid(row=0, column=1, padx=20, pady=(20, 10))
+        
+        self.prev_button = customtkinter.CTkButton(self.middle_frame, text="Prev", command=self.prev_button_event)
+        self.prev_button.grid(row=6, column=0, padx=(40,10), pady=(10,40))
+
+        self.flip_button = customtkinter.CTkButton(self.middle_frame, text="Flip", command=self.flip_button_event)
+        self.flip_button.grid(row=6, column=1, padx=10, pady=(10,40))
+
+        self.next_button = customtkinter.CTkButton(self.middle_frame, text="Next", command=self.next_button_event)
+        self.next_button.grid(row=6, column=2, padx=(10,40), pady=(10,40))
+
 
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
-        self.textbox.insert("0.0", "CTkTextbox\n\n" + "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\n\n" * 20)
 
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
@@ -61,8 +78,26 @@ class App(customtkinter.CTk):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
 
-    def sidebar_button_event(self):
-        print("sidebar_button click")
+    def prev_button_event(self):
+        print("go to last card")
+
+    def flip_button_event(self):
+        print("flip card")
+
+    def next_button_event(self):
+        print("go to next card")
+
+    def start_bucket_button_event(self):
+        print("show start bucket")
+
+    def learning_bucket_button_event(self):
+        print("show learning bucket")
+
+    def correct_bucket_button_event(self):
+        print("show correct bucket")
+
+    def option_button_event(self):
+        print("show options")
 
 
 if __name__ == "__main__":
