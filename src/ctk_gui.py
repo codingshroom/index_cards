@@ -75,6 +75,14 @@ class App(customtkinter.CTk):
         self.next_button = customtkinter.CTkButton(self.card_frame, text="Next", command=self.next_button_event)
         self.next_button.grid(row=6, column=2, padx=(10,40), pady=(10,40))
 
+        self.question_label = customtkinter.CTkLabel(
+            self.card_frame, 
+            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ", 
+            font=customtkinter.CTkFont(size=16),
+            )
+        self.question_label.configure(wraplength=400, justify="center")
+        self.question_label.grid(row=2, column=0, columnspan=3)
+
 
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
