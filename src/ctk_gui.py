@@ -50,21 +50,29 @@ class App(customtkinter.CTk):
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 40))
 
         # create middle_frame
-        self.middle_frame = customtkinter.CTkFrame(self, width=220, corner_radius=0) 
-        self.middle_frame.grid(row=0, column=1, rowspan=6, sticky="nsew", padx=20)
-        self.middle_frame.grid_rowconfigure(4, weight=1)
-        self.middle_frame.grid_columnconfigure(3, weight=0)
+        self.middle_frame = customtkinter.CTkFrame(self, width=300, corner_radius=0)
+        self.middle_frame.grid(row=0, rowspan=6, column=1, sticky="nsew", padx=20)
+        self.middle_frame.grid_columnconfigure((0, 2), weight=1)
+        self.middle_frame.grid_columnconfigure(1, weight=0)
 
-        self.card_label = customtkinter.CTkLabel(self.middle_frame, text="Card", font=customtkinter.CTkFont(size=20, weight="bold"))
+        self.middle_frame.grid_rowconfigure(0, weight=1)
+        
+        self.card_frame = customtkinter.CTkFrame(self.middle_frame, width=220, corner_radius=0, fg_color="transparent") 
+        self.card_frame.grid(row=0, column=1, sticky="nsew")
+        self.card_frame.grid_columnconfigure(2, weight=0)
+        for i in range(1, 6):
+            self.card_frame.grid_rowconfigure(i, weight=1)
+
+        self.card_label = customtkinter.CTkLabel(self.card_frame, text="Card", font=customtkinter.CTkFont(size=20, weight="bold"))
         self.card_label.grid(row=0, column=1, padx=20, pady=(20, 10))
         
-        self.prev_button = customtkinter.CTkButton(self.middle_frame, text="Prev", command=self.prev_button_event)
+        self.prev_button = customtkinter.CTkButton(self.card_frame, text="Prev", command=self.prev_button_event)
         self.prev_button.grid(row=6, column=0, padx=(40,10), pady=(10,40))
 
-        self.flip_button = customtkinter.CTkButton(self.middle_frame, text="Flip", command=self.flip_button_event)
+        self.flip_button = customtkinter.CTkButton(self.card_frame, text="Flip", command=self.flip_button_event)
         self.flip_button.grid(row=6, column=1, padx=10, pady=(10,40))
 
-        self.next_button = customtkinter.CTkButton(self.middle_frame, text="Next", command=self.next_button_event)
+        self.next_button = customtkinter.CTkButton(self.card_frame, text="Next", command=self.next_button_event)
         self.next_button.grid(row=6, column=2, padx=(10,40), pady=(10,40))
 
 
