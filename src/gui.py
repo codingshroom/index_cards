@@ -96,10 +96,10 @@ class App(customtkinter.CTk):
         self.question_label.configure(wraplength=400, justify="center")
         self.question_label.grid(row=2, column=0, columnspan=3)
 
-        self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.wrong_button_event, fg_color="#C0392B")
+        self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.wrong_button_event, fg_color="#C0392B", hover_color="#9B2A1F")
         self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
 
-        self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.right_button_event, fg_color="#27AE60")
+        self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.right_button_event, fg_color="#27AE60", hover_color="#1E8031")
         self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
 
         # set default values
