@@ -2,13 +2,26 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 
+from cards import CARDS
+
+
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
 customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
+class Card:
+    def __init__(self, id: int, question: str, answer: str):
+        self.id = id
+        self.question = question
+        self.answer = answer
+
+
 class App(customtkinter.CTk):
-    def __init__(self):
+    def __init__(self, cards):
         super().__init__()
+        self.cards = [Card(card[0], card[1], card[2]) for card in cards]
+        self.current_card = 0
+        self.is_revealed = False
 
         # configure window
         self.title("Index Card Learning System")
@@ -77,18 +90,17 @@ class App(customtkinter.CTk):
 
         self.question_label = customtkinter.CTkLabel(
             self.card_frame, 
-            text="Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. ", 
+            text="ready?", 
             font=customtkinter.CTkFont(size=16),
             )
         self.question_label.configure(wraplength=400, justify="center")
         self.question_label.grid(row=2, column=0, columnspan=3)
 
-        self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.flip_button_event, fg_color="#C0392B")
+        self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.wrong_button_event, fg_color="#C0392B")
         self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
 
-        self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.flip_button_event, fg_color="#27AE60")
+        self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.right_button_event, fg_color="#27AE60")
         self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
-
 
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
@@ -101,13 +113,22 @@ class App(customtkinter.CTk):
         customtkinter.set_widget_scaling(new_scaling_float)
 
     def prev_button_event(self):
+        self.prev_card()
         print("go to last card")
 
     def flip_button_event(self):
+        self.flip_card()
         print("flip card")
 
     def next_button_event(self):
+        self.next_card()
         print("go to next card")
+
+    def right_button_event(self):
+        print("right button")
+
+    def wrong_button_event(self):
+        print("wrong button")
 
     def start_bucket_button_event(self):
         print("show start bucket")
@@ -121,9 +142,26 @@ class App(customtkinter.CTk):
     def option_button_event(self):
         print("show options")
 
+    def flip_card(self):
+        self.is_revealed = not self.is_revealed
+        if self.is_revealed:
+            self.question_label.configure(text=self.cards[self.current_card].answer)
+        else:
+            self.question_label.configure(text=self.cards[self.current_card].question)
+
+    def next_card(self):
+        self.current_card = (self.current_card + 1) % len(self.cards)
+        self.is_revealed = False
+        self.question_label.configure(text=self.cards[self.current_card].question)
+
+    def prev_card(self):
+        self.current_card = (self.current_card - 1) % len(self.cards)
+        self.is_revealed = False
+        self.question_label.configure(text=self.cards[self.current_card].question)
+
 
 if __name__ == "__main__":
-    app = App()
+    app = App(CARDS)
     app.mainloop()
 
 
