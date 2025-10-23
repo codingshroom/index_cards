@@ -67,13 +67,13 @@ class App(customtkinter.CTk):
         self.card_label.grid(row=0, column=1, padx=20, pady=(20, 10))
         
         self.prev_button = customtkinter.CTkButton(self.card_frame, text="Prev", command=self.prev_button_event)
-        self.prev_button.grid(row=6, column=0, padx=(40,10), pady=(10,40))
+        self.prev_button.grid(row=6, column=0, padx=(40,10), pady=(10, 40))
 
         self.flip_button = customtkinter.CTkButton(self.card_frame, text="Flip", command=self.flip_button_event)
-        self.flip_button.grid(row=6, column=1, padx=10, pady=(10,40))
+        self.flip_button.grid(row=6, column=1, padx=10, pady=(10, 40))
 
         self.next_button = customtkinter.CTkButton(self.card_frame, text="Next", command=self.next_button_event)
-        self.next_button.grid(row=6, column=2, padx=(10,40), pady=(10,40))
+        self.next_button.grid(row=6, column=2, padx=(10,40), pady=(10, 40))
 
         self.question_label = customtkinter.CTkLabel(
             self.card_frame, 
@@ -82,6 +82,12 @@ class App(customtkinter.CTk):
             )
         self.question_label.configure(wraplength=400, justify="center")
         self.question_label.grid(row=2, column=0, columnspan=3)
+
+        self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.flip_button_event, fg_color="#C0392B")
+        self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
+
+        self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.flip_button_event, fg_color="#27AE60")
+        self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
 
 
         # set default values
@@ -119,4 +125,5 @@ class App(customtkinter.CTk):
 if __name__ == "__main__":
     app = App()
     app.mainloop()
+
 
