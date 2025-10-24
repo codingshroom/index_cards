@@ -90,17 +90,15 @@ class App(customtkinter.CTk):
 
         self.question_label = customtkinter.CTkLabel(
             self.card_frame, 
-            text="ready?", 
+            text=self.cards[self.current_card].question,
             font=customtkinter.CTkFont(size=16),
             )
         self.question_label.configure(wraplength=400, justify="center")
         self.question_label.grid(row=2, column=0, columnspan=3)
 
         self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.wrong_button_event, fg_color="#C0392B", hover_color="#9B2A1F")
-        self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
 
         self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.right_button_event, fg_color="#27AE60", hover_color="#1E8031")
-        self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
 
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
@@ -142,12 +140,17 @@ class App(customtkinter.CTk):
     def option_button_event(self):
         print("show options")
 
-    def flip_card(self):
+    def flip_card(self, side=0):
         self.is_revealed = not self.is_revealed
         if self.is_revealed:
             self.question_label.configure(text=self.cards[self.current_card].answer)
+            self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
+            self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
         else:
             self.question_label.configure(text=self.cards[self.current_card].question)
+            self.wrong_button.grid_forget()
+            self.right_button.grid_forget()
+            
 
     def next_card(self):
         self.current_card = (self.current_card + 1) % len(self.cards)
