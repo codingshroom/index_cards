@@ -97,7 +97,6 @@ class App(customtkinter.CTk):
         self.question_label.grid(row=2, column=0, columnspan=3)
 
         self.wrong_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.wrong_button_event, fg_color="#C0392B", hover_color="#9B2A1F")
-
         self.right_button = customtkinter.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.right_button_event, fg_color="#27AE60", hover_color="#1E8031")
 
         # set default values
@@ -140,7 +139,7 @@ class App(customtkinter.CTk):
     def option_button_event(self):
         print("show options")
 
-    def flip_card(self, side=0):
+    def flip_card(self):
         self.is_revealed = not self.is_revealed
         if self.is_revealed:
             self.question_label.configure(text=self.cards[self.current_card].answer)
@@ -151,11 +150,12 @@ class App(customtkinter.CTk):
             self.wrong_button.grid_forget()
             self.right_button.grid_forget()
             
-
     def next_card(self):
-        self.current_card = (self.current_card + 1) % len(self.cards)
         self.is_revealed = False
+        self.current_card = (self.current_card + 1) % len(self.cards)
         self.question_label.configure(text=self.cards[self.current_card].question)
+        self.wrong_button.grid_forget()
+        self.right_button.grid_forget()
 
     def prev_card(self):
         self.current_card = (self.current_card - 1) % len(self.cards)
