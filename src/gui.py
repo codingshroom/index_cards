@@ -15,7 +15,6 @@ class Card:
         self.question = question
         self.answer = answer
 
-
 class App(customtkinter.CTk):
     def __init__(self, cards):
         super().__init__()
@@ -32,7 +31,7 @@ class App(customtkinter.CTk):
         self.grid_columnconfigure(2, weight=0)
         self.grid_rowconfigure((0, 1, 2), weight=1)
 
-        # create sidebar_left frame with widgets
+    def create_sidebar_left(self):
         self.sidebar_frame = customtkinter.CTkFrame(self, width=140, corner_radius=0)
         self.sidebar_frame.grid(row=0, column=0, rowspan=4, sticky="nsew")
         self.sidebar_frame.grid_rowconfigure(4, weight=1)
@@ -44,8 +43,10 @@ class App(customtkinter.CTk):
         self.sidebar_button_2.grid(row=2, column=0, padx=20, pady=40)
         self.sidebar_button_3 = customtkinter.CTkButton(self.sidebar_frame, text="Three Correct", command=self.correct_bucket_button_event)
         self.sidebar_button_3.grid(row=3, column=0, padx=20, pady=40)
+        print(self.sidebar_button_3.cget("fg_color"))
+        print(self.sidebar_button_3.cget("hover_color"))
 
-        # create sidebar_right
+    def create_sidebar_right(self):
         self.sidebar_right_frame = customtkinter.CTkFrame(self, width=140, corner_radius=0)
         self.sidebar_right_frame.grid(row=0, column=3, rowspan=4, sticky="nsew")
         self.sidebar_right_frame.grid_rowconfigure(4, weight=1)
@@ -62,7 +63,7 @@ class App(customtkinter.CTk):
                                                                        )
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 40))
 
-        # create middle_frame
+    def create_middle_frame(self):
         self.middle_frame = customtkinter.CTkFrame(self, width=300, corner_radius=0)
         self.middle_frame.grid(row=0, rowspan=6, column=1, sticky="nsew", padx=20)
         self.middle_frame.grid_columnconfigure((0, 2), weight=1)
@@ -161,10 +162,15 @@ class App(customtkinter.CTk):
         self.current_card = (self.current_card - 1) % len(self.cards)
         self.is_revealed = False
         self.question_label.configure(text=self.cards[self.current_card].question)
+        self.wrong_button.grid_forget()
+        self.right_button.grid_forget()
 
 
 if __name__ == "__main__":
     app = App(CARDS)
+    app.create_sidebar_left()
+    app.create_sidebar_right()
+    app.create_middle_frame()
     app.mainloop()
 
 
