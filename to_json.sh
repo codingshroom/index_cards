@@ -1,1 +1,1 @@
-python3 -m src.to_json
+python3 -m src.json_handler

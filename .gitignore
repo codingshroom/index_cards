@@ -3,3 +3,4 @@ __pycache__/
 .DS_Store
 data/
 src/__init__.py
+__init__.py

@@ -2,7 +2,7 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 
-from cards import CARDS
+from src.json_handler import writes, reads
 
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
@@ -10,15 +10,15 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 
 
 class Card:
-    def __init__(self, id: int, question: str, answer: str):
-        self.id = id
+    def __init__(self, index: int, question: str, answer: str):
+        self.index = index
         self.question = question
         self.answer = answer
 
 class App(customtkinter.CTk):
     def __init__(self, cards):
         super().__init__()
-        self.cards = [Card(card[0], card[1], card[2]) for card in cards]
+        self.cards = [Card(**data) for data in cards.values()]
         self.current_card = 0
         self.is_revealed = False
 
@@ -165,7 +165,8 @@ class App(customtkinter.CTk):
 
 
 if __name__ == "__main__":
-    app = App(CARDS)
+    cards = reads()
+    app = App(cards)
     app.create_sidebar_left()
     app.create_sidebar_right()
     app.create_middle_frame()
