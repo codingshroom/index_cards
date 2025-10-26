@@ -1,7 +1,7 @@
 import json
 
 
-with open('src/cards.json', encoding="utf-8") as cards:
+with open('data/card_data.json', encoding="utf-8") as cards:
     data = json.load(cards)
 
 
