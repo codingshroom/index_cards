@@ -4,7 +4,7 @@ import json
 from data.card_data import CARD_DATA
 
 
-key_list = ["index", "question", "answer"]
+key_list = ["index", "streak", "question", "answer"]
 card_dict = { str(c[0]): dict(zip(key_list, c)) for c in CARD_DATA }
 
 
@@ -29,4 +29,8 @@ def read_file(path='data/card_data.json'):
 
 if __name__ == "__main__":
     write_file()
+
+
+if __name__ == "__main__":
+    writes()
 

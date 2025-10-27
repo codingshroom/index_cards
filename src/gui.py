@@ -10,10 +10,11 @@ customtkinter.set_default_color_theme("dark-blue")  # Themes: "blue" (standard),
 
 
 class Card:
-    def __init__(self, index: int, question: str, answer: str):
+    def __init__(self, index: int, streak: list, question: str, answer: str):
         self.index = index
         self.question = question
         self.answer = answer
+        self.streak = streak
 
 class App(customtkinter.CTk):
     def __init__(self, cards):
@@ -101,15 +102,12 @@ class App(customtkinter.CTk):
 
     def prev_button_event(self):
         self.prev_card()
-        print("go to last card")
 
     def flip_button_event(self):
         self.flip_card()
-        print("flip card")
 
     def next_button_event(self):
         self.next_card()
-        print("go to next card")
 
     def right_button_event(self):
         print("right button")
