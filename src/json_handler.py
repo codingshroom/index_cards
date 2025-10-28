@@ -28,5 +28,5 @@ def read_file(path='data/card_data.json'):
 
 
 if __name__ == "__main__":
-    writes()
+    write_file()
 

@@ -2,7 +2,7 @@ import tkinter
 import tkinter.messagebox
 import customtkinter
 
-from src.json_handler import writes, reads
+from src.json_handler import write_file, read_file
 
 
 customtkinter.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
@@ -165,7 +165,7 @@ class App(customtkinter.CTk):
 
 
 if __name__ == "__main__":
-    cards = reads()
+    cards = read_file()
     app = App(cards)
     app.create_sidebar_left()
     app.create_sidebar_right()
