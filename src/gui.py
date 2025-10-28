@@ -18,9 +18,6 @@ class Card:
 class App(customtkinter.CTk):
     def __init__(self, cards):
         super().__init__()
-        self.cards = [Card(**data) for data in cards.values()]
-        self.current_card = 0
-        self.is_revealed = False
 
         # configure window
         self.title("Index Card Learning System")
@@ -101,12 +98,6 @@ class App(customtkinter.CTk):
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
 
-    def change_appearance_mode_event(self, new_appearance_mode: str):
-        customtkinter.set_appearance_mode(new_appearance_mode)
-
-    def change_scaling_event(self, new_scaling: str):
-        new_scaling_float = int(new_scaling.replace("%", "")) / 100
-        customtkinter.set_widget_scaling(new_scaling_float)
 
     def prev_button_event(self):
         self.prev_card()
@@ -164,6 +155,29 @@ class App(customtkinter.CTk):
         self.right_button.grid_forget()
 
 
+class Logic:
+    def __init__(self):
+        self.cards = [Card(**data) for data in cards.values()]
+        self.current_card = 0
+        self.is_revealed = False
+
+    def flip_card(self):
+        pass
+
+    def next_card(self):
+        pass
+
+    def prev_card(self):
+        pass
+    
+    def change_appearance_mode_event(self, new_appearance_mode: str):
+        customtkinter.set_appearance_mode(new_appearance_mode)
+
+    def change_scaling_event(self, new_scaling: str):
+        new_scaling_float = int(new_scaling.replace("%", "")) / 100
+        customtkinter.set_widget_scaling(new_scaling_float)
+
+
 if __name__ == "__main__":
     cards = read_file()
     app = App(cards)
@@ -171,5 +185,4 @@ if __name__ == "__main__":
     app.create_sidebar_right()
     app.create_middle_frame()
     app.mainloop()
-
 
