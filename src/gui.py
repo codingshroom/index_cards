@@ -16,8 +16,10 @@ class Card:
         self.answer = answer
         self.streak = streak
 
+card_args_list = []
+
 class App(customtkinter.CTk):
-    def __init__(self, cards):
+    def __init__(self, cards: dict):
         super().__init__()
 
         # configure window
@@ -66,7 +68,7 @@ class App(customtkinter.CTk):
         self.middle_frame.grid_columnconfigure(1, weight=0)
 
         self.middle_frame.grid_rowconfigure(0, weight=1)
-        
+
         self.card_frame = customtkinter.CTkFrame(self.middle_frame, width=220, corner_radius=0, fg_color="transparent") 
         self.card_frame.grid(row=0, column=1, sticky="nsew")
         self.card_frame.grid_columnconfigure(2, weight=0)
