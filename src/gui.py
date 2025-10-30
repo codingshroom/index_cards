@@ -16,8 +16,6 @@ class Card:
         self.answer = answer
         self.streak = streak
 
-card_args_list = []
-
 class App(customtkinter.CTk):
     def __init__(self, cards: dict):
         super().__init__()
@@ -129,6 +127,9 @@ class App(customtkinter.CTk):
     def option_button_event(self):
         print("show options")
 
+    def show_card(self, card):
+        pass
+
     def flip_card(self):
         self.is_revealed = not self.is_revealed
         if self.is_revealed:
@@ -158,18 +159,21 @@ class App(customtkinter.CTk):
 class Logic:
     def __init__(self):
         self.cards = [Card(**data) for data in cards.values()]
-        self.current_card = 0
+        self.current_card_index = 0
         self.is_revealed = False
+        self.start_bucket = ()
+        self.learning_bucket = ()
+        self.correct_bucket = ()
 
-    def flip_card(self):
-        pass
+    def flip_card(self, card: object, is_revealed: bool):
+        return card.other_side
 
-    def next_card(self):
-        pass
+    def next_card(self, card: object):
+        return next_card
 
-    def prev_card(self):
-        pass
-    
+    def prev_card(self, card: object):
+        return prev_card
+
     def change_appearance_mode_event(self, new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
 
