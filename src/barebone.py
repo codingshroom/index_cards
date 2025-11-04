@@ -1,28 +1,33 @@
-# imports
+import tkinter
+import tkinter.messagebox
+import customtkinter as ctk
 
-# from json_handler import read_file, write_file
+from src.json_handler import write_file, read_file
 
 
 class Card:
-    id: int
-    streak: list # holds three booleans, fifo, like queue
-    question: str
-    answer: str
+    def __init__(self, index: int, streak: list, question: str, answer: str):
+        self.index = index
+        self.streak = streak  # holds three booleans, fifo - like queue
+        self.question = question
+        self.answer = answer
 
 
 class Logic:
-    all_cards: list # all cards in all buckets, might not be needed
-    start_bucket: set
-    learning_bucket: set
-    three_correct_bucket: set
-    cards: list # those in the current bucket (with a random order)
-    current_card_index: int
-    current_card: object # not sure if needed - might be perfectly fine to use index
-    is_answer_revealed: bool
-    card_content: str # will either be question or answer, depending on state of logic, being called by App
-    show_right_button: bool
-    show_wrong_button: bool
-    
+    def __init__(self, cards: dict, start_bucket: set, learning_bucket: set, three_correct_bucket: set):
+        self.all_cards = [Card(**data) for data in cards.values()]
+        self.start_bucket = start_bucket
+        self.learning_bucket = learning_bucket
+        self.three_correct_bucket = three_correct_bucket
+        self.current_bucket = start_bucket
+        self.cards = list(self.current_bucket)
+        self.current_card_index = 0
+        self.current_card = self.cards[current_card_index]
+        self.is_answer_revealed = False
+        self.card_content = ""
+        self.show_right_button = False
+        self.show_wrong_button = False
+
     def next_card():
         # increase current_card_index by one, looping around if at last index previously
 
@@ -44,8 +49,20 @@ class Logic:
         # if right or wrong button was clicked for current card and run
         # double or multi insertion should be prevented
 
+    def change_to_start_bucket():
+        # self.current_bucket = self.start_bucket
+
+    def change_to_learning_bucket():
+        # self.current_bucket = self.learning_bucket
+
+    def change_to_three_correct_bucket():
+        # self.current_bucket = self.three_correct_bucket
+
 
 class App:
+    def __init__(self):
+        super().__init__()
+        
     def create_left_frame():
         # buttons for buckets, show which one is selected (maybe radio buttons)
         # start_bucket
@@ -90,4 +107,14 @@ class App:
 
     def press_save_button():
         # write_file()
+
+    def press_start_bucket_button():
+        # Logic.change_to_start_bucket()
+
+    def press_learning_bucket_button():
+        # Logic.change_to_learning_bucket()
+
+    def press_three_correct_bucket_button():
+        # Logic.change_to_three_correct_bucket()
+
 
