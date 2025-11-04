@@ -1,0 +1,32 @@
+{
+    "0": {
+        "index": 0,
+        "question": "Lagerwirtschaft",
+        "answer": "Planung, Organisation und Kontrolle von Lagerbeständen um den Waren- und Materialfluss in einem Unternehmen effizient zu steuern"
+    },
+    "1": {
+        "index": 1,
+        "question": "Materialwirtschaft",
+        "answer": "Planung, Steuerung und Verwaltung der Materialbewegungen eines Unternehmens"
+    },
+    "2": {
+        "index": 2,
+        "question": "KANO-Modell",
+        "answer": "Werkzeug zur Analyse von Kundenbedürfnissen und zur Verbesserung von Produkten/Leistungen"
+    },
+    "3": {
+        "index": 3,
+        "question": "Teile des KANO-Modells",
+        "answer": "Basismerkmale, Leistungsmerkmale, Begeisterungsmerkmale, unerhebliche Merkmale, Rückweisungsmerkmale"
+    },
+    "4": {
+        "index": 4,
+        "question": "Mindestkapital für GmbH-Gründung",
+        "answer": "25.000 €"
+    },
+    "5": {
+        "index": 5,
+        "question": "Formen des Kaufmanns",
+        "answer": "Ist-Kaufmann: betreibt Handelsgewerbe und ist per Gesetz Kaufmann, Form-Kaufmann: Kapitalgesellschaft die aufgrund ihrer Rechtsform Kaufmann ist (bspw. GmbH oder AG), Kann-Kaufmann: freiwillig für Kleingewerbetreibende oder land-/forstwirtschaftliche Betriebe"
+    }
+}

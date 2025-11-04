@@ -13,7 +13,7 @@ ctk.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", 
 
 
 def main():
-    cards, start_bucket, learning_bucket, three_correct_bucket = read_file()
+    cards = read_file()
     logic = Logic(cards, start_bucket, learning_bucket, three_correct_bucket)
     app = App()
     app.create_left_frame()
