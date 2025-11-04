@@ -1,8 +1,15 @@
-from gui import App
-from logic import Logic
-from card import Card
+import tkinter
+import tkinter.messagebox
+import customtkinter as ctk
 
+from src.gui import App
+from src.logic import Logic
+from src.card import Card
 from src.json_handler import write_file, read_file
+
+
+ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"
+ctk.set_default_color_theme("dark-blue")  # Themes: "blue" (standard), "green", "dark-blue"
 
 
 def main():
