@@ -4,7 +4,7 @@ import json
 from data.card_data import CARD_DATA
 
 
-key_list = ["index", "streak", "question", "answer"]
+key_list = ["index", "streak", "is_edited", "question", "answer"]
 card_dict = { str(c[0]): dict(zip(key_list, c)) for c in CARD_DATA }
 
 
