@@ -31,6 +31,7 @@ class Logic:
     def next_card(self):
         self.current_card_index += 1
         self.current_card_index %= len(self.current_bucket)
+        self.is_answer_revealed = False
         self.update()
 
     def flip_card(self):
@@ -40,6 +41,7 @@ class Logic:
     def prev_card(self):
         self.current_card_index -= 1
         self.current_card_index %= len(self.current_bucket)
+        self.is_answer_revealed = False
         self.update()
 
     def get_answer_right(self):
