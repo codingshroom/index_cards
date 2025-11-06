@@ -1,4 +1,4 @@
 ooda/
 __pycache__/
 .DS_Store
-data/*.json
+data/card_data.json
