@@ -25,7 +25,7 @@ class Logic:
 
     def update(self):
         self.cards = list(self.current_bucket)
-        self.current_card = self.cards[current_card_index]
+        self.current_card = self.cards[self.current_card_index]
         self.card_content = self.current_card.answer if self.is_answer_revealed else self.current_card.question
 
     def next_card(self):

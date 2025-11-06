@@ -6,6 +6,7 @@ import customtkinter as ctk
 class App(ctk.CTk):
     def __init__(self, logic: object):
         super().__init__()
+        self.logic = logic
 
         # configure window
         self.title("Index Card Learning System")
@@ -53,7 +54,7 @@ class App(ctk.CTk):
                                                                        )
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 40))
 
-    def create_middle_frame(self, logic: object):
+    def create_middle_frame(self):
         self.middle_frame = ctk.CTkFrame(self, width=300, corner_radius=0)
         self.middle_frame.grid(row=0, rowspan=6, column=1, sticky="nsew", padx=20)
         self.middle_frame.grid_columnconfigure((0, 2), weight=1)
@@ -81,7 +82,7 @@ class App(ctk.CTk):
 
         self.question_answer_label = ctk.CTkLabel(
             self.card_frame, 
-            text=logic.card_content,
+            text=self.logic.card_content,
             font=ctk.CTkFont(size=16),
             )
         self.question_answer_label.configure(wraplength=400, justify="center")
@@ -93,29 +94,29 @@ class App(ctk.CTk):
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
 
-    def press_prev_button(self, logic: object):
-        logic.prev_card()
-        self.question_answer_label.configure(text=logic.card_content)
+    def press_prev_button(self):
+        self.logic.prev_card()
+        self.question_answer_label.configure(text=self.logic.card_content)
         self.wrong_button.grid_forget()
         self.right_button.grid_forget()
 
-    def press_flip_button(self, logic: object):
-        logic.flip_card()
-        self.question_answer_label.configure(text=logic.card_content)
+    def press_flip_button(self):
+        self.logic.flip_card()
+        self.question_answer_label.configure(text=self.logic.card_content)
         self.wrong_button.grid_forget()
         self.right_button.grid_forget()
 
-    def press_next_button(self, logic: object):
-        logic.next_card()
-        self.question_answer_label.configure(text=logic.card_content)
+    def press_next_button(self):
+        self.logic.next_card()
+        self.question_answer_label.configure(text=self.logic.card_content)
         self.wrong_button.grid_forget()
         self.right_button.grid_forget()
 
-    def press_right_button(self, logic: object):
-        logic.get_answer_right()
+    def press_right_button(self):
+        self.logic.get_answer_right()
 
-    def press_wrong_button(self, logic: object):
-        logic.get_answer_wrong()
+    def press_wrong_button(self):
+        self.logic.get_answer_wrong()
 
     def press_load_button(self):
         read_file()
@@ -123,14 +124,14 @@ class App(ctk.CTk):
     def press_save_button(self):
         write_file()
 
-    def press_start_bucket_button(self, logic: object):
-        logic.change_to_start_bucket()
+    def press_start_bucket_button(self):
+        self.logic.change_to_start_bucket()
 
-    def press_learning_bucket_button(self, logic: object):
-        logic.change_to_learning_bucket()
+    def press_learning_bucket_button(self):
+        self.logic.change_to_learning_bucket()
 
-    def press_three_correct_bucket_button(self, logic: object):
-        logic.change_to_three_correct_bucket()
+    def press_three_correct_bucket_button(self):
+        self.logic.change_to_three_correct_bucket()
 
     def option_button(self):
         print("option button")

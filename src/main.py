@@ -22,7 +22,7 @@ def main():
     app = App(logic)
     app.create_left_frame()
     app.create_right_frame()
-    app.create_middle_frame(logic)
+    app.create_middle_frame()
     app.mainloop()
 
 
