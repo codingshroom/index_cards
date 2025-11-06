@@ -14,6 +14,11 @@ class Logic:
         self.show_right_button = False
         self.show_wrong_button = False
 
+    def update(self):
+        self.cards = list(self.current_bucket)
+        self.current_card = self.current_card[current_card_index]
+        self.card_content = self.current_card.answer if self.is_answer_revealed else self.current_card.question
+
     def next_card(self):
         self.current_card_index += 1
         self.current_card_index %= len(self.current_bucket)
@@ -38,13 +43,14 @@ class Logic:
         self.deactivate_feedback_buttons()
 
     def activate_feedback_buttons(self):
-        # if no right or wrong button was clicked for current card and run yet
-        self.show_right_button = True
-        self.show_wrong_button = True
+        if not current_card.is_edited:
+            self.show_right_button = True
+            self.show_wrong_button = True
 
     def deactivate_feedback_buttons(self):
-        # if right or wrong button was clicked for current card and run
-        # double or multi insertion should be prevented
+        if current_card.is_edited:
+            self.show_right_button = False
+            self.show_wrong_button = False
 
     def change_to_start_bucket(self):
         self.current_bucket = self.start_bucket
