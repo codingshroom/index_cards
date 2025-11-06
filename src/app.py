@@ -4,7 +4,7 @@ import customtkinter as ctk
 
 
 class App:
-    def __init__(self):
+    def __init__(self, logic):
         super().__init__()
 
         # configure window
@@ -87,19 +87,22 @@ class App:
         self.appearance_mode_optionemenu.set("Dark")
 
     def press_prev_button(logic):
-        # Logic.prev_card()
-        # show card
-        # forget right/wrong buttons
+        logic.prev_card()
+        self.question_answer_label.configure(text=logic.card_content)
+        self.wrong_button.grid_forget()
+        self.right_button.grid_forget()
 
     def press_flip_button(logic):
-        # Logic.flip_card()
-        # show card
-        # forget right/wrong buttons
+        logic.flip_card()
+        self.question_answer_label.configure(text=logic.card_content)
+        self.wrong_button.grid_forget()
+        self.right_button.grid_forget()
 
     def press_next_button(logic):
-        # logic.next_card()
-        # show card
-        # forget right/wrong buttons
+        logic.next_card()
+        self.question_answer_label.configure(text=logic.card_content)
+        self.wrong_button.grid_forget()
+        self.right_button.grid_forget()
 
     def press_right_button(logic):
         logic.get_answer_right()
