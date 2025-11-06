@@ -125,18 +125,14 @@ class App(ctk.CTk):
         write_file()
 
     def press_start_bucket_button(self):
-        self.logic.change_to_start_bucket()
+        self.logic.change_to_bucket(self.logic.start_bucket)
 
     def press_learning_bucket_button(self):
-        self.logic.change_to_learning_bucket()
+        self.logic.change_to_bucket(self.logic.learning_bucket)
 
     def press_three_correct_bucket_button(self):
-        self.logic.change_to_three_correct_bucket()
+        self.logic.change_to_bucket(self.logic.three_correct_bucket)
 
     def option_button(self):
         print("option button")
-
-
-
-
 

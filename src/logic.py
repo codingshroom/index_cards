@@ -62,15 +62,10 @@ class Logic:
             self.show_right_button = False
             self.show_wrong_button = False
 
-    def change_to_start_bucket(self):
-        self.current_bucket = self.start_bucket
-        self.update()
-
-    def change_to_learning_bucket(self):
-        self.current_bucket = self.learning_bucket
-        self.update()
-
-    def change_to_three_correct_bucket(self):
-        self.current_bucket = self.three_correct_bucket
-        self.update()
+    def change_to_bucket(self, bucket):
+        if bucket:
+            self.current_bucket = bucket
+            self.update()
+        else:
+            print("Bucket couldn't be selected because it is empty. ")
 
