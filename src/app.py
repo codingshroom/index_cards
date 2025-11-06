@@ -103,6 +103,10 @@ class App(ctk.CTk):
     def press_flip_button(self):
         self.logic.flip_card()
         self.question_answer_label.configure(text=self.logic.card_content)
+        if self.logic.show_right_button:
+            self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
+        if self.logic.show_wrong_button:
+            self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
 
     def press_next_button(self):
         self.logic.next_card()
