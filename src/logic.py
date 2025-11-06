@@ -4,15 +4,22 @@ from src.card import Card
 class Logic:
     def __init__(self, cards: dict, start_bucket: set, learning_bucket: set, three_correct_bucket: set):
         self.all_cards = [Card(**data) for data in cards.values()]
-        self.start_bucket = start_bucket
-        self.learning_bucket = learning_bucket
-        self.three_correct_bucket = three_correct_bucket
-        self.current_bucket = start_bucket
+        self.start_bucket = []
+        self.learning_bucket = []
+        self.three_correct_bucket = []
+        for card in self.all_cards:
+            if card.index in start_bucket:
+                self.start_bucket.append(card)
+            elif card.index in learning_bucket:
+                self.learning_bucket.append(card)
+            elif card.index in three_correct_bucket:
+                self.three_correct_bucket.append(card)
+        self.current_bucket = self.start_bucket
         self.cards = list(self.current_bucket)
         self.current_card_index = 0
         self.current_card = self.cards[self.current_card_index]
         self.is_answer_revealed = False
-        self.card_content = self.current_card.answer if self.is_answer_revealed else self.current_card.question
+        self.card_content = self.current_card.question
         self.show_right_button = False
         self.show_wrong_button = False
 
