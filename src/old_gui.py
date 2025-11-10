@@ -16,9 +16,11 @@ class Card:
         self.answer = answer
         self.streak = streak
 
+card_args_list = []
 
-class Logic:
-    def __init__(self, cards: dict, start_bucket: set, learning_bucket: set, correct_bucket: set):
+class App(customtkinter.CTk):
+    def __init__(self, cards: dict):
+        super().__init__()
         self.cards = [Card(**data) for data in cards.values()]
         self.current_card_index = 0
         self.is_revealed = False
