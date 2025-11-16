@@ -1,0 +1,72 @@
+{
+    "0": {
+        "index": 0,
+        "streak": [],
+        "is_edited": false,
+        "question": "Lagerwirtschaft",
+        "answer": "Planung, Organisation und Kontrolle von Lagerbeständen um den Waren- und Materialfluss in einem Unternehmen effizient zu steuern"
+    },
+    "1": {
+        "index": 1,
+        "streak": [],
+        "is_edited": false,
+        "question": "Materialwirtschaft",
+        "answer": "Planung, Steuerung und Verwaltung der Materialbewegungen eines Unternehmens"
+    },
+    "2": {
+        "index": 2,
+        "streak": [],
+        "is_edited": false,
+        "question": "KANO-Modell",
+        "answer": "Werkzeug zur Analyse von Kundenbedürfnissen und zur Verbesserung von Produkten/Leistungen"
+    },
+    "3": {
+        "index": 3,
+        "streak": [],
+        "is_edited": false,
+        "question": "Teile des KANO-Modells",
+        "answer": "Basismerkmale, Leistungsmerkmale, Begeisterungsmerkmale, unerhebliche Merkmale, Rückweisungsmerkmale"
+    },
+    "4": {
+        "index": 4,
+        "streak": [],
+        "is_edited": false,
+        "question": "Mindestkapital für GmbH-Gründung",
+        "answer": "25.000 €"
+    },
+    "5": {
+        "index": 5,
+        "streak": [],
+        "is_edited": false,
+        "question": "Rechtsfähigkeit",
+        "answer": "Rechtsfähigkeit ist die Fähigkeit von Personen, Träger von Rechten und Pflichten zu sein"
+    },
+    "6": {
+        "index": 6,
+        "streak": [],
+        "is_edited": false,
+        "question": "Rechtsfähigkeit von Natürlichen Personen",
+        "answer": "Rechtsfähigkeit von Geburt bis zum Tode. Die Rechtsfähigkeit darf nicht entzogen werden"
+    },
+    "7": {
+        "index": 7,
+        "streak": [],
+        "is_edited": false,
+        "question": "Rechtsfähigkeit von Juristischen Personen",
+        "answer": "Rechtsfähigkeit beginnt mit der Gründung bis zur Auflösung. Die Verleihung und Anerkennung der Rechtsfähigkeit wird durch Gesetze geregelt. z.B. Eintragung einer GmbH"
+    },
+    "8": {
+        "index": 8,
+        "streak": [],
+        "is_edited": false,
+        "question": "Geschäftsfähigkeit",
+        "answer": "Geschäftsfähigkeit ist die Fähigkeit, rechtsgeschäftliche Willenserklärungen abzugeben und entgegenzunehmen"
+    },
+    "9": {
+        "index": 9,
+        "streak": [],
+        "is_edited": false,
+        "question": "Geschäftsunfähigkeit",
+        "answer": "Personen bis zum 7. Lebensjahr oder wegen einer psychischen, geistigen oder seelischen Behinderung nicht in der Lage sind, ihre Willenserklärungen zu verstehen oder abzugeben. BGB § 104"
+    }
+}
