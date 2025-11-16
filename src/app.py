@@ -88,8 +88,8 @@ class App(ctk.CTk):
         self.question_answer_label.configure(wraplength=400, justify="center")
         self.question_answer_label.grid(row=2, column=0, columnspan=3)
 
-        self.wrong_button = ctk.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.press_wrong_button, fg_color="#C0392B", hover_color="#9B2A1F")
         self.right_button = ctk.CTkButton(self.card_frame, height=28, width=220, text="Right", command=self.press_right_button, fg_color="#27AE60", hover_color="#1E8031")
+        self.wrong_button = ctk.CTkButton(self.card_frame, height=28, width=220, text="Wrong", command=self.press_wrong_button, fg_color="#C0392B", hover_color="#9B2A1F")
 
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
@@ -103,10 +103,14 @@ class App(ctk.CTk):
     def press_flip_button(self):
         self.logic.flip_card()
         self.question_answer_label.configure(text=self.logic.card_content)
-        if self.logic.show_right_button:
+        if self.logic.is_answer_revealed and self.logic.show_right_button:
             self.right_button.grid(row=5, column=1, columnspan=2, sticky="e", padx=(10, 40), pady=10)
-        if self.logic.show_wrong_button:
+        else:
+            self.right_button.grid_forget()
+        if self.logic.is_answer_revealed and self.logic.show_wrong_button:
             self.wrong_button.grid(row=5, column=0, columnspan=2, sticky="w", padx=(40, 10), pady=10)
+        else:
+            self.wrong_button.grid_forget()
 
     def press_next_button(self):
         self.logic.next_card()

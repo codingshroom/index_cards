@@ -36,6 +36,10 @@ class Logic:
 
     def flip_card(self):
         self.is_answer_revealed = not self.is_answer_revealed
+        if self.is_answer_revealed:
+            self.activate_feedback_buttons()
+        else:
+            self.deactivate_feedback_buttons()
         self.update()
 
     def prev_card(self):
@@ -45,22 +49,22 @@ class Logic:
         self.update()
 
     def get_answer_right(self):
-        card.streak.pop(0)
-        card.streak.append(True)
+        self.current_card.streak.pop(0)
+        self.current_card.streak.append(True)
         self.deactivate_feedback_buttons()
 
     def get_answer_wrong(self):
-        card.streak.pop(0)
-        card.streak.append(False)
+        self.current_card.streak.pop(0)
+        self.current_card.streak.append(False)
         self.deactivate_feedback_buttons()
 
     def activate_feedback_buttons(self):
-        if not current_card.is_edited:
+        if not self.current_card.is_edited:
             self.show_right_button = True
             self.show_wrong_button = True
 
     def deactivate_feedback_buttons(self):
-        if current_card.is_edited:
+        if self.current_card.is_edited:
             self.show_right_button = False
             self.show_wrong_button = False
 
