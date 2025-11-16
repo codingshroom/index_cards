@@ -49,13 +49,19 @@ class Logic:
         self.update()
 
     def get_answer_right(self):
-        self.current_card.streak.pop(0)
-        self.current_card.streak.append(True)
+        if not self.current_card.is_edited:
+            if len(self.current_card.streak) == 3:
+                self.current_card.streak.pop(0)
+            self.current_card.streak.append(True)
+        self.current_card.is_edited = True
         self.deactivate_feedback_buttons()
 
     def get_answer_wrong(self):
-        self.current_card.streak.pop(0)
-        self.current_card.streak.append(False)
+        if not self.current_card.is_edited:
+            if len(self.current_card.streak) == 3:
+                self.current_card.streak.pop(0)
+            self.current_card.streak.append(False)
+        self.current_card.is_edited = True
         self.deactivate_feedback_buttons()
 
     def activate_feedback_buttons(self):
