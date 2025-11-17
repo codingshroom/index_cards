@@ -1,4 +1,5 @@
 from src.card import Card
+from src.json_handler import write_file
 
 
 class Logic:
@@ -63,6 +64,9 @@ class Logic:
             self.current_card.streak.append(False)
         self.current_card.is_edited = True
         self.deactivate_feedback_buttons()
+
+    def get_updated_card_data(self):
+        return [[card.index, card.streak, card.is_edited, card.question, card.answer] for card in self.all_cards]
 
     def activate_feedback_buttons(self):
         if not self.current_card.is_edited:
