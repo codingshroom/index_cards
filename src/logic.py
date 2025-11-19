@@ -16,17 +16,20 @@ class Logic:
             elif card.index in three_correct_bucket:
                 self.three_correct_bucket.append(card)
         self.current_bucket = self.start_bucket
-        self.cards = list(self.current_bucket)
+        self.cards_list = list(self.current_bucket)
         self.current_card_index = 0
-        self.current_card = self.cards[self.current_card_index]
+        self.current_card = self.cards_list[self.current_card_index]
         self.is_answer_revealed = False
         self.card_content = self.current_card.question
         self.show_right_button = False
         self.show_wrong_button = False
+        self.card_data = []
+        self.key_list = ["index", "streak", "is_edited", "question", "answer"]
+        self.card_dict = {}
 
     def update(self):
-        self.cards = list(self.current_bucket)
-        self.current_card = self.cards[self.current_card_index]
+        self.cards_list = list(self.current_bucket)
+        self.current_card = self.cards_list[self.current_card_index]
         self.card_content = self.current_card.answer if self.is_answer_revealed else self.current_card.question
 
     def next_card(self):
@@ -65,9 +68,6 @@ class Logic:
         self.current_card.is_edited = True
         self.deactivate_feedback_buttons()
 
-    def get_updated_card_data(self):
-        return [[card.index, card.streak, card.is_edited, card.question, card.answer] for card in self.all_cards]
-
     def activate_feedback_buttons(self):
         if not self.current_card.is_edited:
             self.show_right_button = True
@@ -84,4 +84,15 @@ class Logic:
             self.update()
         else:
             print("Bucket couldn't be selected because it is empty. ")
+
+    def update_card_data(self):
+        self.card_data = [[card.index, card.streak, card.is_edited, card.question, card.answer] for card in self.all_cards]
+
+    def update_card_dict(self):
+        self.update_card_data()
+        self.card_dict = { str(card[0]): dict(zip(self.key_list, card)) for card in self.card_data }
+
+    def save_card_data(self):
+        self.update_card_dict()
+        write_file(path='data/card_data.py', card_data=self.card_data)
 

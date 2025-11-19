@@ -140,5 +140,6 @@ class App(ctk.CTk):
         self.logic.change_to_bucket(self.logic.three_correct_bucket)
 
     def option_button(self):
-        print("option button")
+        self.logic.save_card_data()
+        print("saved, hopefully xx")
 

@@ -7,5 +7,5 @@ class Card:
         self.answer = answer
 
     def __repr__(self):
-        return f"{self.index=}\n{self.streak=}\n{self.is_edited=}\n{self.question=}\n"
+        return f"\n{self.index=}\n{self.streak=}\n{self.is_edited=}\n{self.question=}\n"
 

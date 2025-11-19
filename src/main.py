@@ -24,10 +24,8 @@ def main():
     app.create_left_frame()
     app.create_right_frame()
     app.create_middle_frame()
-    CARD_DATA = logic.get_updated_card_data()
     breakpoint()
     app.mainloop()
-    
 
 
 if __name__ == "__main__":
