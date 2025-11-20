@@ -43,7 +43,7 @@ class App(ctk.CTk):
         self.right_frame.grid_rowconfigure(4, weight=1)
         self.left_label = ctk.CTkLabel(self.right_frame, text="Menu", font=ctk.CTkFont(size=20, weight="bold"))
         self.left_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.right_button_1 = ctk.CTkButton(self.right_frame, text="Options", command=self.option_button)
+        self.right_button_1 = ctk.CTkButton(self.right_frame, text="Save", command=self.save_button)
         self.right_button_1.grid(row=1, column=0, padx=20, pady=10)
 
         self.appearance_mode_label = ctk.CTkLabel(self.right_frame, text="Appearance Mode:", anchor="w")
@@ -139,7 +139,7 @@ class App(ctk.CTk):
     def press_three_correct_bucket_button(self):
         self.logic.change_to_bucket(self.logic.three_correct_bucket)
 
-    def option_button(self):
+    def save_button(self):
         self.logic.save_card_data()
-        print("saved, hopefully xx")
+        print("saved, probably")
 

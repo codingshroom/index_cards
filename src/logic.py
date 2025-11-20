@@ -94,5 +94,5 @@ class Logic:
 
     def save_card_data(self):
         self.update_card_dict()
-        write_file(path='data/card_data.py', card_data=self.card_data)
+        write_file(path='data/card_data.py', file_format="py", card_data=self.card_data)
 

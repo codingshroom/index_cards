@@ -24,7 +24,6 @@ def main():
     app.create_left_frame()
     app.create_right_frame()
     app.create_middle_frame()
-    breakpoint()
     app.mainloop()
 
 

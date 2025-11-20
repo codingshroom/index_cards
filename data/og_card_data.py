@@ -1,5 +1,3 @@
-
-
 CARD_DATA = [
         [0, [], False, "Lagerwirtschaft", "Planung, Organisation und Kontrolle von Lagerbeständen um den Waren- und Materialfluss in einem Unternehmen effizient zu steuern"],
         [1, [], False, "Materialwirtschaft", "Planung, Steuerung und Verwaltung der Materialbewegungen eines Unternehmens"],
@@ -12,4 +10,3 @@ CARD_DATA = [
         [8, [], False, "Geschäftsfähigkeit", "Geschäftsfähigkeit ist die Fähigkeit, rechtsgeschäftliche Willenserklärungen abzugeben und entgegenzunehmen"],
         [9, [], False, "Geschäftsunfähigkeit", "Personen bis zum 7. Lebensjahr oder wegen einer psychischen, geistigen oder seelischen Behinderung nicht in der Lage sind, ihre Willenserklärungen zu verstehen oder abzugeben. BGB § 104"],
 ]
-
