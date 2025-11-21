@@ -6,7 +6,6 @@ from src.app import App
 from src.logic import Logic
 from src.card import Card
 from src.json_handler import write_file, read_file
-from data.card_data import CARD_DATA
 
 
 ctk.set_appearance_mode("Dark")  # Modes: "System" (standard), "Dark", "Light"

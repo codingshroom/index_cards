@@ -1,14 +1,20 @@
 {
     "0": {
         "index": 0,
-        "streak": [],
-        "is_edited": false,
+        "streak": [
+            true,
+            false,
+            false
+        ],
+        "is_edited": true,
         "question": "Lagerwirtschaft",
         "answer": "Planung, Organisation und Kontrolle von Lagerbeständen um den Waren- und Materialfluss in einem Unternehmen effizient zu steuern"
     },
     "1": {
         "index": 1,
-        "streak": [],
+        "streak": [
+            false
+        ],
         "is_edited": false,
         "question": "Materialwirtschaft",
         "answer": "Planung, Steuerung und Verwaltung der Materialbewegungen eines Unternehmens"
@@ -22,21 +28,27 @@
     },
     "3": {
         "index": 3,
-        "streak": [],
+        "streak": [
+            true
+        ],
         "is_edited": false,
         "question": "Teile des KANO-Modells",
         "answer": "Basismerkmale, Leistungsmerkmale, Begeisterungsmerkmale, unerhebliche Merkmale, Rückweisungsmerkmale"
     },
     "4": {
         "index": 4,
-        "streak": [],
+        "streak": [
+            true
+        ],
         "is_edited": false,
         "question": "Mindestkapital für GmbH-Gründung",
         "answer": "25.000 €"
     },
     "5": {
         "index": 5,
-        "streak": [],
+        "streak": [
+            false
+        ],
         "is_edited": false,
         "question": "Rechtsfähigkeit",
         "answer": "Rechtsfähigkeit ist die Fähigkeit von Personen, Träger von Rechten und Pflichten zu sein"
@@ -57,14 +69,18 @@
     },
     "8": {
         "index": 8,
-        "streak": [],
+        "streak": [
+            true
+        ],
         "is_edited": false,
         "question": "Geschäftsfähigkeit",
         "answer": "Geschäftsfähigkeit ist die Fähigkeit, rechtsgeschäftliche Willenserklärungen abzugeben und entgegenzunehmen"
     },
     "9": {
         "index": 9,
-        "streak": [],
+        "streak": [
+            false
+        ],
         "is_edited": false,
         "question": "Geschäftsunfähigkeit",
         "answer": "Personen bis zum 7. Lebensjahr oder wegen einer psychischen, geistigen oder seelischen Behinderung nicht in der Lage sind, ihre Willenserklärungen zu verstehen oder abzugeben. BGB § 104"
