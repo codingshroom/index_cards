@@ -37,6 +37,7 @@ class Logic:
         self.current_card_index %= len(self.current_bucket)
         self.is_answer_revealed = False
         self.update()
+        self.deactivate_feedback_buttons()
 
     def flip_card(self):
         self.is_answer_revealed = not self.is_answer_revealed
@@ -51,6 +52,7 @@ class Logic:
         self.current_card_index %= len(self.current_bucket)
         self.is_answer_revealed = False
         self.update()
+        self.deactivate_feedback_buttons()
 
     def get_answer_right(self):
         if not self.current_card.is_edited:

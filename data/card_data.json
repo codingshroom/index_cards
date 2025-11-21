@@ -2,9 +2,9 @@
     "0": {
         "index": 0,
         "streak": [
-            true,
             false,
-            false
+            true,
+            true
         ],
         "is_edited": true,
         "question": "Lagerwirtschaft",
