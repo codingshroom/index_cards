@@ -5,16 +5,11 @@ from src.json_handler import write_file
 class Logic:
     def __init__(self, cards: dict, buckets: dict):
         self.all_cards = [Card(**data) for data in cards.values()]
+        self.bucket_dict = buckets
         self.start_bucket = []
         self.learning_bucket = []
         self.three_correct_bucket = []
-        for card in self.all_cards:
-            if card.index in set(buckets["start_bucket"]):
-                self.start_bucket.append(card)
-            elif card.index in set(buckets["learning_bucket"]):
-                self.learning_bucket.append(card)
-            elif card.index in set(buckets["three_correct_bucket"]):
-                self.three_correct_bucket.append(card)
+        self.update_buckets()
         self.current_bucket = self.start_bucket
         self.cards_list = list(self.current_bucket)
         self.current_card_index = 0
@@ -87,15 +82,30 @@ class Logic:
         else:
             print("Bucket couldn't be selected because it is empty. ")
 
-    def update_card_data(self):
-        self.card_data = [[card.index, card.streak, card.is_edited, card.question, card.answer] for card in self.all_cards]
+    def update_buckets(self):
+        for card in self.all_cards:
+            if card.index in set(self.bucket_dict["start_bucket"]):
+                self.start_bucket.append(card)
+            elif card.index in set(self.bucket_dict["learning_bucket"]):
+                self.learning_bucket.append(card)
+            elif card.index in set(self.bucket_dict["three_correct_bucket"]):
+                self.three_correct_bucket.append(card)
 
-    def update_card_dict(self):
-        self.update_card_data()
-        self.card_dict = { str(card[0]): dict(zip(self.key_list, card)) for card in self.card_data }
+    def update_bucket_dict(self):
+        self.bucket_dict = {}
+        key_list = ["start_bucket", "learning_bucket", "three_correct_bucket"]
+        bucket_list = [self.start_bucket, self.learning_bucket, self.three_correct_bucket]
+        empty_dict = dict(zip(key_list, bucket_list))
+        self.bucket_dict = {key: [card.index for card in bucket] for key, bucket in empty_dict.items()}
+
+    def update_data(self):
+        self.card_data = [[card.index, card.streak, card.is_edited, card.question, card.answer] for card in self.all_cards]  # creates a list with cards, each card being a list with it's values
+        self.card_dict = { str(card[0]): dict(zip(self.key_list, card)) for card in self.card_data }  # creates a json ready dictionary with cards and current values
 
     def save_card_data(self):
-        self.update_card_dict()
-        json_result = write_file(card_data=self.card_dict)
-        return json_result
+        self.update_data()
+        self.update_bucket_dict()
+        self.update_bucket()
+        card_data = write_file(card_data=self.card_dict)
+        bucket_data = write_file(path="data/buckets.json", card_data=self.bucket_dict)
 
