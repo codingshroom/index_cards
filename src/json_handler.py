@@ -24,8 +24,5 @@ def write_file(path='data/card_data.json', card_data=None):
 
 
 if __name__ == "__main__":
-    read_data = read_file()
-    print(f"{read_data=}")
-    result = write_file(card_data=read_data)
-    print(f"{result=}")
+    pass
 
