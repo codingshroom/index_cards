@@ -43,8 +43,10 @@ class App(ctk.CTk):
         self.right_frame.grid_rowconfigure(4, weight=1)
         self.left_label = ctk.CTkLabel(self.right_frame, text="Menu", font=ctk.CTkFont(size=20, weight="bold"))
         self.left_label.grid(row=0, column=0, padx=20, pady=(20, 10))
-        self.right_button_1 = ctk.CTkButton(self.right_frame, text="Save", command=self.save_button)
+        self.right_button_1 = ctk.CTkButton(self.right_frame, text="Save", command=self.press_save_button)
         self.right_button_1.grid(row=1, column=0, padx=20, pady=10)
+        self.right_button_2 = ctk.CTkButton(self.right_frame, text="New Card", command=self.press_new_card_button)
+        self.right_button_2.grid(row=2, column=0, padx=20, pady=10)
 
         self.appearance_mode_label = ctk.CTkLabel(self.right_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
@@ -119,16 +121,10 @@ class App(ctk.CTk):
         self.right_button.grid_forget()
 
     def press_right_button(self):
-        self.logic.get_answer_right()
+        self.logic.get_answer(True)
 
     def press_wrong_button(self):
-        self.logic.get_answer_wrong()
-
-    def press_load_button(self):
-        read_file()
-
-    def press_save_button(self):
-        write_file()
+        self.logic.get_answer(False)
 
     def press_start_bucket_button(self):
         self.logic.change_to_bucket(self.logic.start_bucket)
@@ -139,7 +135,9 @@ class App(ctk.CTk):
     def press_three_correct_bucket_button(self):
         self.logic.change_to_bucket(self.logic.three_correct_bucket)
 
-    def save_button(self):
+    def press_save_button(self):
         self.logic.save_card_data()
-        print("saved, probably")
+
+    def press_new_card_button(self):
+        self.logic.new_card()
 

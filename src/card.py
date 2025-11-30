@@ -9,3 +9,11 @@ class Card:
     def __repr__(self):
         return f"\n{self.index=}\n{self.streak=}\n{self.is_edited=}\n{self.question=}\n"
 
+    def __lt__(self, card):
+        if card.index < self.index:
+            return card
+        elif self.index < card.index:
+            return self
+        else:
+            return Error(f"two cards with the same index")
+
