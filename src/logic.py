@@ -79,6 +79,9 @@ class Logic:
             print("Bucket couldn't be selected because it is empty. ")
 
     def update_buckets(self):
+        self.start_bucket = []
+        self.learning_bucket = []
+        self.three_correct_bucket = []
         for card in self.all_cards:
             if card.index in set(self.bucket_dict["start_bucket"]):
                 self.start_bucket.append(card)
@@ -118,4 +121,10 @@ class Logic:
         self.all_cards.append(card)
         self.start_bucket.append(card)
         self.update_bucket_dict()
+
+    def delete_card(self):
+        check = input("Are you sure you want to delete the current card? \nEnter <Y> to confirm ")
+        if check.lower() == "y":
+            self.all_cards.remove(self.current_card)
+            self.current_bucket.remove(self.current_card)
 

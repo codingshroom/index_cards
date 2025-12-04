@@ -43,17 +43,21 @@ class App(ctk.CTk):
         self.right_frame.grid_rowconfigure(4, weight=1)
         self.left_label = ctk.CTkLabel(self.right_frame, text="Menu", font=ctk.CTkFont(size=20, weight="bold"))
         self.left_label.grid(row=0, column=0, padx=20, pady=(20, 10))
+
         self.right_button_1 = ctk.CTkButton(self.right_frame, text="Save", command=self.press_save_button)
         self.right_button_1.grid(row=1, column=0, padx=20, pady=10)
         self.right_button_2 = ctk.CTkButton(self.right_frame, text="New Card", command=self.press_new_card_button)
         self.right_button_2.grid(row=2, column=0, padx=20, pady=10)
+        self.right_button_3 = ctk.CTkButton(self.right_frame, text="Delete Card", command=self.press_delete_card_button)
+        self.right_button_3.grid(row=3, column=0, padx=20, pady=10)
 
         self.appearance_mode_label = ctk.CTkLabel(self.right_frame, text="Appearance Mode:", anchor="w")
         self.appearance_mode_label.grid(row=5, column=0, padx=20, pady=(10, 0))
-        self.appearance_mode_optionemenu = ctk.CTkOptionMenu(self.right_frame, 
-                                                                       values=["Light", "Dark", "System"], 
-                                                                       command=self.change_appearance_mode_event
-                                                                       )
+        self.appearance_mode_optionemenu = ctk.CTkOptionMenu(
+            self.right_frame, 
+            values=["Light", "Dark", "System"], 
+            command=self.change_appearance_mode_event
+            )
         self.appearance_mode_optionemenu.grid(row=6, column=0, padx=20, pady=(10, 40))
 
     def create_middle_frame(self):
@@ -61,7 +65,6 @@ class App(ctk.CTk):
         self.middle_frame.grid(row=0, rowspan=6, column=1, sticky="nsew", padx=20)
         self.middle_frame.grid_columnconfigure((0, 2), weight=1)
         self.middle_frame.grid_columnconfigure(1, weight=0)
-
         self.middle_frame.grid_rowconfigure(0, weight=1)
 
         self.card_frame = ctk.CTkFrame(self.middle_frame, width=220, corner_radius=0, fg_color="transparent") 
@@ -140,4 +143,7 @@ class App(ctk.CTk):
 
     def press_new_card_button(self):
         self.logic.new_card()
+
+    def press_delete_card_button(self):
+        self.logic.delete_card()
 
