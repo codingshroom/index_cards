@@ -99,6 +99,13 @@ class App(ctk.CTk):
         # set default values
         self.appearance_mode_optionemenu.set("Dark")
 
+    def frame_new_card(self):
+        self.frame_new_card = ctk.CTkFrame(self.middle_frame, width=220, corner_radius=0, fg_color="transparent") 
+        self.frame_new_card.grid(row=0, column=1, sticky="nsew")
+        self.frame_new_card.grid_columnconfigure(2, weight=0)
+        for i in range(1, 6):
+            self.frame_new_card.grid_rowconfigure(i, weight=1)
+
     def press_prev_button(self):
         self.logic.prev_card()
         self.question_answer_label.configure(text=self.logic.card_content)
